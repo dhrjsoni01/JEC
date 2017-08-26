@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of Faculty"
+        android:id="@+id/text_name_faculty"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take  Attendance"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:drawableRight="@mipmap/ic_atten"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:id="@+id/btn_take_attendance"
+        android:background="@drawable/faculty_btn"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Attendance"
+        android:textAllCaps="false"
+        android:drawableRight="@mipmap/ic_view"
+        android:textSize="20sp"
+        android:id="@+id/btn_view_attendance"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/faculty_btn"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" View History"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:drawableRight="@mipmap/ic_history"
+        android:id="@+id/btn_history"
+        android:background="@drawable/faculty_btn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Change PIN  "
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:id="@+id/btn_change_pin"
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableStart="@mipmap/ic_pin"
+        android:background="@drawable/faculty_btn"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:drawableStart="@mipmap/ic_logout"
+        android:id="@+id/btn_logout_faculty"
+        android:background="@drawable/faculty_btn"/>
+
+
+</LinearLayout>
