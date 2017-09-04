@@ -1,94 +1,55 @@
-var   express = require("express");
-var   app     = express();
-var mongoose = require("mongoose");
-mongoose.connect("mongodb://dks:admin@ds111204.mlab.com:11204/jec");
-const STUDENT = require("./models/student");
-const ADMIN= require("./models/admin");
-const ATTENDANCE = require("./models/attendance");
-const BRANCH = require("./models/branch");
-const BATCH = require("./models/batch");
-const FACULTY = require("./models/faculty");
+const port = process.env.PORT || 8080;
 
-const batchData = {
-  name: "2015",
-};
-const adminData = {
-  name : {
-    first : "Dheeraj",
-    middle: "kumar",
-    last  : "soni"
-  },
-  gender : "male",
-  email      : "9589719689",
-  mobile     : "9589719689",
-  type       : "developer"
-};
 
-const facultyData = {
-  name : {
-    first : "Dheeraj",
-    middle: "kumar",
-    last  : "soni"
-  },
-  department : "cse",
-  gender : "male",
-  email      : "9589719689",
-  mobile     : "9589719689",
-};
+var   express     = require("express");
+var   app         = express();
+var   mongoose    = require("mongoose");
+var   bodyParser  = require('body-parser');
+var   morgan      = require('morgan');
+var   jwt         = require('jsonwebtoken');
+var   config      = require('./config');
+var   passport    = require('passport')
 
-const branchData= {
-  name        : "Computer Science",
-  branchCode  : "CS2015",
-};
 
-BRANCH.create(branchData,function(err,data){
-  if(err){
-    console.log(err);
-  }else{
-    console.log(data);
+
+const STUDENT     = require("./models/student");
+const ADMIN       = require("./models/admin");
+const ATTENDANCE  = require("./models/attendance");
+const BRANCH      = require("./models/branch");
+const BATCH       = require("./models/batch");
+const FACULTY     = require("./models/faculty");
+const apiRoutes   = require("./router");
+const studentRoutes = require('./routes/studentsRoute');
+const facultyRoute = require('./routes/facultyRoute');
+const adminRoute = require('./routes/adminRoute');
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use(passport.initialize());
+require('./functions/loginStudent')(passport);
+
+
+mongoose.connect(config.databaseLocal,function(err,done){
+  console.log("db connection");
+  if (err) {
+    console.log("connection error" + err);
+
+  }else {
+    console.log("connected");
   }
 });
 
-STUDENT.create({
-  rollNo      : "0201cd151024",
-  email       : "dhrjsoni01@gmail.com",
-  name : {
-    first : "Dheeraj",
-    middle: "kumar",
-    last  : "soni"
-  },
-  password    : "dheeraj",
-  mobile      : "9589719689",
-  branchCode  : "CS15",
-  semester    : "S5",
-},function(err,data){
-  if(err){
-    console.log(err);
-  }else{
-    console.log(data);
-  }
-});
+app.set('superSecret', config.secret);
 
-BATCH.create(batchData,function(err,data){
-  if(err){
-    console.log(err);
-  }else{
-    console.log(data);
-  }
-});
+app.use(morgan('dev'));
+app.use('/api',apiRoutes);
+app.use('/api/student',studentRoutes);
+app.use('/api/faculty',facultyRoute);
+app.use('/api/admin',adminRoute);
 
-FACULTY.create(facultyData,function(err,data){
-  if(err){
-    console.log(err);
-  }else{
-    console.log(data);
-  }
+
+
+
+app.listen(port,function(){
+  console.log("app server is running on port "+ port);
 })
-
-ADMIN.create(adminData,function(err,data){
-  if(err){
-    console.log(err);
-  }else{
-    console.log(data);
-  }
-});

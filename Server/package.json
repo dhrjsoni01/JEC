@@ -13,9 +13,18 @@
   "author": "DKS",
   "license": "ISC",
   "dependencies": {
+    "basic-auth": "*",
+    "bcrypt": "^1.0.3",
+    "bcryptjs": "*",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "jsonwebtoken": "*",
     "mongoose": "^4.11.9",
-    "passport": "^0.4.0"
+    "morgan": "*",
+    "nodemailer": "*",
+    "nodemon": "^1.11.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "randomstring": "*"
   }
 }
