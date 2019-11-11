@@ -19,7 +19,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jsonwebtoken": "*",
-    "mongoose": "^4.11.9",
+    "mongoose": "^5.7.5",
     "morgan": "*",
     "nodemailer": "*",
     "nodemon": "^1.11.0",
