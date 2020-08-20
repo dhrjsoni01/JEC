@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "basic-auth": "*",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "*",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
